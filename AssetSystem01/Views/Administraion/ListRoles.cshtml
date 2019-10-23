@@ -1,0 +1,31 @@
+﻿
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "ListRoles";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>ListRoles</h1>
+
+<a asp-controller="Administraion" asp-action="CreateRole" class="btn btn-success">Create New Role</a>
+@if (Model.Any())
+{
+    <table>
+        @foreach (var role in Model)
+        {
+
+            <tr>
+                <td>@role.Id</td>
+                <td>@role.Name</td>
+                <td>
+                    <!--Bắt quyền người dùng có được chỉnh sửa hay ko ?-->
+                  
+                        <a class="btn btn-primary" asp-action="EditRole" asp-controller="Administraion"
+                           asp-route-id="@role.Id">Edit</a>
+                  
+
+                </td>
+            </tr>
+        }
+    </table>
+}

@@ -1,0 +1,31 @@
+﻿
+
+@model System.Collections.Generic.IEnumerable<SystemAsset02.ViewModel.ListUserViewModel>
+@{
+    ViewData["Title"] = "ListUser";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>ListUser</h1>
+<a asp-controller="Account" asp-action="Register" class="btn btn-success">Tạo mới tài khoản</a>
+<table class="table table-bordered">
+    <tr>
+        <th>STT</th>
+        <th>UserName</th>
+        <th>PassWord</th>
+        <th>Quyền</th>
+        <th>Thao tác</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>1</td>
+            <td>@item.UserName</td>
+            <td>@item.PassWord</td>
+            <td>@item.RoleName</td>
+            <td><a asp-controller="Account" asp-action="EditUser" asp-route-id="@item.Id" class="btn btn-danger">Edit</a></td>
+        </tr>
+
+    }
+</table>

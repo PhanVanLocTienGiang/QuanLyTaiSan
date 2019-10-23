@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "ListRole";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>ListRole</h1>
+
+@using Microsoft.AspNetCore.Authorization
+
+@inject IAuthorizationService authorizationService
+
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+<a asp-controller="Administration" asp-action="CreateRole" class="btn btn-success">Create New Role</a>
+@if (Model.Any())
+{
+    <table>
+        @foreach (var role in Model)
+        {
+
+            <tr>
+                <td>@role.Id</td>
+                <td>@role.Name</td>
+                <td>
+                    <!--Bắt quyền người dùng có được chỉnh sửa hay ko ?-->
+                    @*@if ((await authorizationService.AuthorizeAsync(User, "EditRolePolicy")).Succeeded)
+        {
+            <a class="btn btn-primary" asp-action="EditRole" asp-controller="Administraion"
+               asp-route-id="@role.Id">Edit</a>
+        }*@
+                    <a class="btn btn-primary" asp-action="EditRole" asp-controller="Administration"
+                       asp-route-id="@role.Id">Edit</a>
+
+                </td>
+            </tr>
+        }
+    </table>
+}

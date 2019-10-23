@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Decrypt1";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+
+<h1>Giải mã</h1>
+<form method="post" asp-controller="Account" asp-action="Decrypt">
+    <label>Nhập chuỗi đã hóa: </label><br />
+    <input type="text" name="TextEncrypt" id="TextEncrypt" />
+    <hr />
+    <label>Chuỗi chưa mã hóa: </label><br />
+    <input type="text" name="TextDecrypt" id="TextDecrypt" />
+    <button type="button"  id="btnSubmitEncrypt" class="btn btn-success">Gửi</button>
+</form>
+
+
+
